@@ -8,6 +8,8 @@ public class VehicleAud {
     private String audImg;
     private int audTypeId;
     private String audType;
+    private int audPairInstId;
+    
     
 	public int getAudId() {
 		return audId;
@@ -39,5 +41,10 @@ public class VehicleAud {
 	public void setAudType(String audType) {
 		this.audType = audType;
 	}
-      
+	public int getAudPairInstId() {
+		return audPairInstId;
+	}
+	public void setAudPairInstId(int audPairInstId) {
+		this.audPairInstId = audPairInstId;
+	}
 }

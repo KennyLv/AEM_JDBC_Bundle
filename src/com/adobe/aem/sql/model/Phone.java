@@ -8,6 +8,7 @@ public class Phone {
     private String manufacture;
     private String phonename;
     private String phoneimg;
+    private int phonePairId;
     
 	public int getId() {
 		return id;
@@ -38,5 +39,11 @@ public class Phone {
 	}
 	public void setPhoneimg(String phoneimg) {
 		this.phoneimg = phoneimg;
+	}
+	public int getPhonePairId() {
+		return phonePairId;
+	}
+	public void setPhonePairId(int phonePairId) {
+		this.phonePairId = phonePairId;
 	}
 }

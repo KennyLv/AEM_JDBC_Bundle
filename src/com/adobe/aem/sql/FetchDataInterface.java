@@ -1,11 +1,13 @@
 package com.adobe.aem.sql;
 
-import java.sql.Array;
 import java.util.List;
 
+import com.adobe.aem.sql.model.FAQ;
+import com.adobe.aem.sql.model.PairInstStep;
 import com.adobe.aem.sql.model.Phone;
 import com.adobe.aem.sql.model.PhoneCarrier;
 import com.adobe.aem.sql.model.PhoneManufacture;
+import com.adobe.aem.sql.model.PhonePairResult;
 import com.adobe.aem.sql.model.VehicleAud;
 import com.adobe.aem.sql.model.VehicleModel;
 import com.adobe.aem.sql.model.VehicleYear;
@@ -49,26 +51,23 @@ public interface FetchDataInterface {
 	// where tblmod_audio.modelid=1;
 
 	public List<PhoneCarrier> getCarriers();
-
-	// select * from tblmissphone order by missCARRIER DESC;
-	// select distinct(missCARRIER) from tblmissphone where missCARRIER != ""
-	// order by missCARRIER ASC
+	// select distinct(phCARRIER) from tblmobileresults where phCARRIER != \"\"
+	// order by phCARRIER ASC
 
 	public List<PhoneManufacture> getManufactures(String carrier);
-
-	// select * from tblmissphone;
-	// select distinct missMANUF from tblmissphone where missCARRIER = "AT&T";
+	// Select distinct(phCOMPANY) from tblmobileresults where phCARRIER = ?
+	// order by phCOMPANY
 
 	public List<Phone> getPhones(String carrier, String manufacture);
+	// Select * from tblmobileresults where phCARRIER = ? and phCOMPANY=? GROUP
+	// BY phMODEL order by phMODEL ASC
 
-	// select * from tblmissphone;
-	// select * from tblmissphone where missCARRIER = "T-Mobile" and missMOD
-	// !="" and upper(missMANUF) like "%SAMSUNG%" order by missMOD;
+	public PhonePairResult getPhonePairingResult(int recordId);
+	// Select * from tblmobileresults where id = ?
 
-	public Array getPairingInstr();
+	public List<PairInstStep> getPairInst(int pairId);
+	// Select * from tblpairinst where refId = 384 ORDER BY refORD ASC
 
-	// Select * from tblpairinst;
-
-	public Array getFAQs();
+	public List<FAQ> getFAQs();
 	// select * from tblfaq;
 }
